@@ -1,0 +1,40 @@
+import java.util.Scanner;
+public class StringAnalysis {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+        int vowelsCount = 0;
+        int uppercaseCount = 0;
+        int lowercaseCount = 0;
+        int numbersCount = 0;
+        int specialCharactersCount = 0;
+        String vowels = "AEIOUaeiou";
+        for (int i = 0; i < input.length(); i++) {
+            char currentChar = input.charAt(i);
+            if (Character.isUpperCase(currentChar)) {
+                uppercaseCount++;
+                if (vowels.indexOf(currentChar) != -1) {
+                    vowelsCount++;
+                }
+            } else if (Character.isLowerCase(currentChar)) {
+                lowercaseCount++;
+                if (vowels.indexOf(currentChar) != -1) {
+                    vowelsCount++;
+                }
+            } else if (Character.isDigit(currentChar)) {
+                numbersCount++;
+            } else if (!Character.isLetterOrDigit(currentChar)) {
+                specialCharactersCount++;
+            }
+        }
+
+        System.out.println("Number of vowels: " + vowelsCount);
+        System.out.println("Number of uppercase letters: " + uppercaseCount);
+        System.out.println("Number of lowercase letters: " + lowercaseCount);
+        System.out.println("Number of numbers: " + numbersCount);
+        System.out.println("Number of special characters: " + specialCharactersCount);
+
+        scanner.close();
+    }
+}
